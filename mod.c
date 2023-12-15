@@ -1,25 +1,57 @@
 #include "monty.h"
 
 /**
- * f_mod - Computes the rest of the division of the second top element
- *         of the stack by the top element.
- * @head: Double pointer to the beginning of the stack.
- * @counter: Line number in the Monty file.
+ * f_mod - Computes the remainder of the division of the second
+ *         top element of the stack by the top element of the stack.
+ * @stack_head: Pointer to the head of the stack.
+ * @line_number: Line number in the Monty file.
+ *
+ * Description:
+ * This function calculates the remainder of the division of the second
+ * top element of the stack by the top element of the stack. It updates
+ * the stack accordingly.
+ *
+ * Return: No return value.
  */
-void f_mod(stack_t **head, unsigned int counter)
+void f_mod(stack_t **stack_head, unsigned int line_number)
 {
-	if (!head || !*head || !(*head)->next)
+	stack_t *current;
+	int stack_size, result;
+
+	current = *stack_head;
+
+	/* Count the number of elements in the stack */
+	while (current)
 	{
-		fprintf(stderr, "L%d: can't mod, stack too short\n", counter);
+		current = current->next;
+		stack_size++;
+	}
+
+	/* Check if there are at least two elements in the stack */
+	if (stack_size < 2)
+	{
+		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*stack_head);
 		exit(EXIT_FAILURE);
 	}
 
-	if ((*head)->n == 0)
+	current = *stack_head;
+
+	/* Check for division by zero */
+	if (current->n == 0)
 	{
-		fprintf(stderr, "L%d: division by zero\n", counter);
+		fprintf(stderr, "L%d: division by zero\n", line_number);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*stack_head);
 		exit(EXIT_FAILURE);
 	}
 
-	(*head)->next->n %= (*head)->n;
-	f_pop(head, counter);
+	/* Calculate the remainder and update the stack */
+	result = current->next->n % current->n;
+	current->next->n = result;
+	*stack_head = current->next;
+	free(current);
 }
