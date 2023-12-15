@@ -1,29 +1,18 @@
 #include "monty.h"
 
 /**
- * pop_top - removes the top element from the stack
- * @stack_head: pointer to the head of the stack
- * @line_number: line number in the script
- * Return: no return
-*/
-void pop_top(stack_t **stack_head, unsigned int line_number)
+ * f_sub - Subtracts the top element of the stack from the second top element.
+ * @head: Double pointer to the beginning of the stack.
+ * @counter: Line number in the Monty file.
+ */
+void f_sub(stack_t **head, unsigned int counter)
 {
-    stack_t *temp;
+	if (!head || !*head || !(*head)->next)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", counter);
+		exit(EXIT_FAILURE);
+	}
 
-    if (*stack_head == NULL)
-    {
-        fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-        fclose(bus.file);
-        free(bus.content);
-        free_stack(*stack_head);
-        exit(EXIT_FAILURE);
-    }
-
-    temp = *stack_head;
-    *stack_head = temp->next;
-    if (*stack_head)
-    {
-        (*stack_head)->prev = NULL;
-    }
-    free(temp);
+	(*head)->next->n -= (*head)->n;
+	f_pop(head, counter);
 }

@@ -1,24 +1,15 @@
 #include "monty.h"
 
 /**
- * f_pall - Prints the stack.
- * @stack_head: Stack head
- * @line_number: Not used
- *
- * Description:
- * This function prints all elements in the stack.
- *
- * Return: No return value.
+ * f_pall - Prints all the values on the stack.
+ * @stack: Double pointer to the stack.
+ * @line_number: Line number in the Monty byte code file.
  */
-void f_pall(stack_t **stack_head, unsigned int line_number)
+void f_pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current;
-	(void) line_number;
+	(void)line_number;
 
-	current = *stack_head;
-
-	if (current == NULL)
-		return;
+	stack_t *current = *stack;
 
 	while (current)
 	{

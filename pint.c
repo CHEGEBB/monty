@@ -1,21 +1,17 @@
 #include "monty.h"
 
 /**
- * print_top - prints the top element of the stack
- * @stack_head: pointer to the head of the stack
- * @line_number: line number in the script
- * Return: no return
-*/
-void print_top(stack_t **stack_head, unsigned int line_number)
+ * f_pint - Prints the value at the top of the stack.
+ * @stack: Double pointer to the stack.
+ * @line_number: Line number in the Monty byte code file.
+ */
+void f_pint(stack_t **stack, unsigned int line_number)
 {
-	if (*stack_head == NULL)
+	if (*stack == NULL)
 	{
-		fprintf(stderr, "L%u: cannot print, stack is empty\n", line_number);
-		fclose(bus.file);
-		free(bus.content);
-		free_stack(*stack_head);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	printf("%d\n", (*stack_head)->n);
+	printf("%d\n", (*stack)->n);
 }

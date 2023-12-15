@@ -2,33 +2,27 @@
 
 /**
  * f_rotl - Rotates the stack to the top.
- * @head: Stack head
- * @counter: Line number (unused)
- *
- * Description:
- * This function rotates the stack to the top, moving the top element to
- * the bottom.
- *
- * Return: No return value.
+ * @head: Double pointer to the beginning of the stack.
+ * @counter: Line number in the Monty file.
  */
-void f_rotl(stack_t **head, __attribute__((unused)) unsigned int counter)
+void f_rotl(stack_t **head, unsigned int counter)
 {
-	stack_t *tmp = *head, *aux;
+	stack_t *temp;
 
-	if (*head == NULL || (*head)->next == NULL)
+	if (head && *head && (*head)->next)
 	{
-		return;
-	}
-	aux = (*head)->next;
-	aux->prev = NULL;
+		temp = *head;
+		*head = (*head)->next;
+		(*head)->prev = NULL;
 
-	while (tmp->next != NULL)
-	{
-		tmp = tmp->next;
+		while (temp->next)
+			temp = temp->next;
+
+		temp->next = temp->prev;
+		temp->prev = NULL;
+		temp->next->next = NULL;
+		temp->next->prev = temp;
 	}
 
-	tmp->next = *head;
-	(*head)->next = NULL;
-	(*head)->prev = tmp;
-	(*head) = aux;
+	(void)counter;
 }
