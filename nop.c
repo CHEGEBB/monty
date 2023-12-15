@@ -2,12 +2,16 @@
 
 /**
  * f_nop - Does nothing.
- * @head: Double pointer to the beginning of the stack.
- * @counter: Line number in the Monty file.
+ * @stack_head: Stack head
+ * @line_number: Line number
+ *
+ * Description:
+ * This function does nothing and serves as a placeholder.
+ *
+ * Return: No return value.
  */
-void f_nop(stack_t **head, unsigned int counter)
+void f_nop(stack_t **stack_head, unsigned int line_number)
 {
-	(void)head;
-	(void)counter;
-	/* Does nothing */
+	(void) stack_head;
+	(void) line_number;
 }
