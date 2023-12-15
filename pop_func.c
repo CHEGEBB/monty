@@ -36,6 +36,4 @@ void f_pop(stack_t **head, unsigned int counter)
 
     /* Free the memory of the removed element */
     free(h);
-    
-    return; // No changes to the return statement
 }
