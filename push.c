@@ -43,8 +43,5 @@ void f_push(stack_t **stack_head, unsigned int line_number)
 
     value = atoi(bus.arg);
 
-    if (bus.lifi == 0)
-        addnode(stack_head, value);
-    else
-        addqueue(stack_head, value);
+    addnode(stack_head, value);
 }
