@@ -1,18 +1,56 @@
-# 0x19. C - Stacks, Queues - LIFO, FIFO
 
-## The monty program
+# C - Stacks, Queues - LIFO, FIFO and Monty Interpreter 🚀
+## Introduction
+Welcome to the C - Stacks, Queues - LIFO, FIFO and Monty Interpreter project! Developed by CHEGEBB and Diana, this interpreter brings Monty byte codes to life, enabling a unique stack with specific operations.
 
-- Usage: monty file
-where file is the path to the file containing Monty byte code
-- If the user does not give any file or more than one argument to your program, print the error message USAGE: monty file, followed by a new line, and exit with the status EXIT_FAILURE
-- If, for any reason, it’s not possible to open the file, print the error message Error: Can't open file <file>, followed by a new line, and exit with the status EXIT_FAILURE
-where <file> is the name of the file
-- If the file contains an invalid instruction, print the error message L<line_number>: unknown instruction <opcode>, followed by a new line, and exit with the status EXIT_FAILURE
-where is the line number where the instruction appears.
-- Line numbers always start at 1
-The monty program runs the bytecodes line by line and stop if either:
-it executed properly every line of the file
-it finds an error in the file
-an error occured
-- If you can’t malloc anymore, print the error message Error: malloc failed, followed by a new line, and exit with status EXIT_FAILURE.
-- You have to use malloc and free and are not allowed to use any other function from man malloc (realloc, calloc, …)
+## Project Overview
+Monty 0.98, a scripting language compiled into Monty byte codes, is at the heart of our interpreter. It relies on a distinctive stack, offering operations such as stack manipulation, queues, LIFO, and FIFO.
+
+## File Structure
+monty.h: Header file with struct declarations and function prototypes.
+main.c: Main entry point for the interpreter, handling command-line arguments and file operations.
+stack_operations.c: Implementation of stack and queue operations.
+opcode_functions.c: Implementation of opcode functions.
+error_handling.c: Functions for error handling.
+execute_monty.c: Logic for reading and executing Monty byte codes.
+README.md: You're currently reading it! 📖
+Compilation & Execution
+Compile the project using the following command:
+
+```bash
+Copy code
+gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
+```
+## Run the interpreter with:
+
+```bash
+Copy code
+./monty <filename>
+Monty Bytecode Files
+Monty byte code files have a .m extension. Instructions are one per line, and additional spaces before or after the opcode and its argument are allowed.
+
+Example Monty byte code:
+
+monty
+Copy code
+push 0
+push 1
+pop
+add
+pall
+Error Handling
+Incorrect Command-Line Arguments:
+Print: USAGE: monty file
+File Opening Failure:
+Print: Error: Can't open file <file>
+Invalid Instruction:
+Print: L<line_number>: unknown instruction <opcode>
+Memory Allocation Failure:
+Print: Error: malloc failed
+```
+## GitHub Repository
+We maintain our project on GitHub. Remember to have one repository per group to avoid any score deductions.
+
+Feel free to collaborate, test, and improve the interpreter. Happy coding! 🚀
+
+## Authors: CHEGEBB and Diana
