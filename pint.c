@@ -19,7 +19,7 @@ void f_pint(stack_t **head, unsigned int counter)
     if (*head == NULL)
     {
         /* Display an error message and terminate if the stack is empty */
-        fprintf(stderr, "L%u: can't pint, stack is empty\n", counter);
+        fprintf(stderr, "L%u: can't pint, stack empty\n", counter);
         fclose(bus.file);
         free(bus.content);
         free_stack(*head);
