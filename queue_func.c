@@ -1,19 +1,20 @@
 #include "monty.h"
 
 /**
- * f_queue - Sets the stack to queue mode.
+ * f_queue - Switches the stack to queue mode.
  * @stack_head: Stack head
- * @line_number: Line number (unused)
+ * @line_count: Line count (unused)
  *
  * Description:
- * This function sets the stack to queue mode.
+ * This function switches the stack to queue mode.
  * It changes the behavior of the stack operations to work as a queue.
  *
  * Return: No return value.
  */
-void f_queue(stack_t **stack_head, __attribute__((unused)) unsigned int line_number)
+void f_queue(stack_t **stack_head, __attribute__((unused)) unsigned int line_count)
 {
     (void)stack_head;  /* Unused parameter */
+    (void)line_count;  /* Unused parameter */
     bus.lifi = 1;
 }
 
