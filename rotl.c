@@ -2,8 +2,8 @@
 
 /**
  * f_rotl - Rotates the stack to the top.
- * @head: Stack head
- * @counter: Line number (unused)
+ * @stack_head: Stack head
+ * @line_number: Line number (unused)
  *
  * Description:
  * This function rotates the stack to the top, moving the top element to
@@ -11,24 +11,25 @@
  *
  * Return: No return value.
  */
-void f_rotl(stack_t **head, __attribute__((unused)) unsigned int counter)
+void f_rotl(stack_t **stack_head, __attribute__((unused)) unsigned int line_number)
 {
-	stack_t *tmp = *head, *aux;
+    stack_t *current = *stack_head, *new_head;
 
-	if (*head == NULL || (*head)->next == NULL)
-	{
-		return;
-	}
-	aux = (*head)->next;
-	aux->prev = NULL;
+    if (*stack_head == NULL || (*stack_head)->next == NULL)
+    {
+        return;
+    }
 
-	while (tmp->next != NULL)
-	{
-		tmp = tmp->next;
-	}
+    new_head = (*stack_head)->next;
+    new_head->prev = NULL;
 
-	tmp->next = *head;
-	(*head)->next = NULL;
-	(*head)->prev = tmp;
-	(*head) = aux;
+    while (current->next != NULL)
+    {
+        current = current->next;
+    }
+
+    current->next = *stack_head;
+    (*stack_head)->next = NULL;
+    (*stack_head)->prev = current;
+    (*stack_head) = new_head;
 }

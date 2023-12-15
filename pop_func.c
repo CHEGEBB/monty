@@ -1,27 +1,39 @@
 #include "monty.h"
 
 /**
- * pop_top - removes the top element from the stack
- * @stack_head: pointer to the head of the stack
- * @line_number: line number in the script
- * Return: 0 on success, -1 on failure
+ * f_pop - Removes the top element from the stack
+ * @head: Pointer to the stack's head
+ * @counter: Current line number in the script
+ * Return: No return value
+ *
+ * Description:
+ * - This function removes the top element from the stack without altering the stack's structure.
+ * - It checks if the stack is empty before attempting to remove an element.
+ * - If the stack is empty, an error message is displayed, and the program exits.
+ * - The line number of the script where the error occurred is also indicated.
+ * - The function frees the memory of the removed element and adjusts the stack head accordingly.
  */
-int pop_top(stack_t **stack_head, unsigned int line_number)
+void f_pop(stack_t **head, unsigned int counter)
 {
-    stack_t *temp;
+    stack_t *h;
 
-    if (*stack_head == NULL)
+    /* Validate if the stack is empty */
+    if (*head == NULL)
     {
-        fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+        /* Display an error message and terminate if the stack is empty */
+        fprintf(stderr, "L%d: can't pop an empty stack\n", counter);
         fclose(bus.file);
         free(bus.content);
-        free_stack(*stack_head);
-        return -1; // Return an error code
+        free_stack(*head);
+        exit(EXIT_FAILURE);
     }
 
-    temp = *stack_head;
-    *stack_head = temp->next;
-    free(temp);
+    /* Save the current stack head for freeing later */
+    h = *head;
 
-    return 0; // Success
+    /* Update the stack head to the next element */
+    *head = h->next;
+
+    /* Free the memory of the removed element */
+    free(h);
 }

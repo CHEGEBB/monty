@@ -1,21 +1,31 @@
 #include "monty.h"
 
 /**
- * print_top - prints the top element of the stack
- * @stack_head: pointer to the head of the stack
- * @line_number: line number in the script
- * Return: no return
-*/
-void print_top(stack_t **stack_head, unsigned int line_number)
+ * f_pint - Outputs the top element of the stack
+ * @head: Pointer to the stack's head
+ * @counter: Current line number in the script
+ * Return: No return value
+ *
+ * Description:
+ * - This function prints the top element of the stack without modifying the stack.
+ * - It checks if the stack is empty before attempting to print.
+ * - If the stack is empty, an error message is displayed, and the program exits.
+ * - The line number of the script where the error occurred is also indicated.
+ * - The function does not alter the state of the stack.
+ */
+void f_pint(stack_t **head, unsigned int counter)
 {
-	if (*stack_head == NULL)
-	{
-		fprintf(stderr, "L%u: cannot print, stack is empty\n", line_number);
-		fclose(bus.file);
-		free(bus.content);
-		free_stack(*stack_head);
-		exit(EXIT_FAILURE);
-	}
+    /* Validate if the stack is empty */
+    if (*head == NULL)
+    {
+        /* Display an error message and terminate if the stack is empty */
+        fprintf(stderr, "L%u: can't pint, stack empty\n", counter);
+        fclose(bus.file);
+        free(bus.content);
+        free_stack(*head);
+        exit(EXIT_FAILURE);
+    }
 
-	printf("%d\n", (*stack_head)->n);
+    /* Print the top element of the stack without modifying the stack */
+    printf("%d\n", (*head)->n);
 }
