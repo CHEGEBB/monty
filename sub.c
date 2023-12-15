@@ -6,7 +6,7 @@
  * @line_number: line number in the script
  * Return: no return
  */
-sub pop_top(stack_t **stack_head, unsigned int line_number)
+void pop_top(stack_t **stack_head, unsigned int line_number)
 {
     stack_t *temp;
 
