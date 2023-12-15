@@ -5,7 +5,7 @@
  * @stack_head: pointer to the head of the stack
  * @line_number: line number in the script
  * Return: no return
-*/
+ */
 void pop_top(stack_t **stack_head, unsigned int line_number)
 {
     stack_t *temp;
