@@ -37,7 +37,7 @@ void addqueue(stack_t **head, int new_value)
 
     if (new_node == NULL)
     {
-        fprintf(stderr, "Error: Memory allocation failed\n");
+        fprintf(stderr, "Error\n");
         fclose(bus.file);
         free(bus.content);
         free_stack(*head);
